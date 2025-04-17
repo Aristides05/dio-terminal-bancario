@@ -32,6 +32,7 @@ public class Layout {
 
         if(saqueSolicitado > cliente.getSaldo()){
             System.out.printf("Saldo Insuficiente, \nSaldo disponivel %.2f Reais", cliente.getSaldo());
+            input.close();
             return;
         }
 
@@ -40,12 +41,6 @@ public class Layout {
 
         System.out.printf("\n\n");
 
-
-        // if(saqueSolicitado > cliente.SALDO){
-        //     System.out.printf("Saldo Insuficiente, \nSaldo disponivel %.2f Reais", cliente.SALDO);
-        //     return;
-        // }
-
-        // System.out.printf("Saque de %.2f Reais Realizado\nSaldo Restante %.2f", saqueSolicitado, cliente.SALDO-saqueSolicitado);
+        input.close();
     }
 }
