@@ -1,40 +1,51 @@
 import java.util.Scanner;
+import java.util.Random;
+
 public class Layout {
     public void layout(){
         Scanner input = new Scanner(System.in);
-        Cliente cliente = new Cliente(); 
+        Random random = new Random();
 
-        int agencia, 
-            conta;
-
-        double saqueSolicitado;
+        String nomeCliente;
 
         System.out.println("========================");
         System.out.println("SISTEMA BANCARIO");
         System.out.println("========================");
-        System.out.println("INFORME SUA AGÊNCIA:");
-        agencia = input.nextInt();
-        System.out.println("INFORME SUA CONTA:");
-        conta = input.nextInt();
+        System.out.println("INFORME SEU NOME PARA A ABERTURA DE CONTA:");
+        nomeCliente = input.next();
 
-        System.out.printf("\n\n");
+        Cliente cliente = new Cliente(nomeCliente);
+        cliente.setAgencia(random.nextInt(900)+100);
+        cliente.setConta(random.nextInt(900000)+100000);
+        cliente.setSaldo(random.nextDouble()*1000);
 
-        if((agencia != cliente.AGENCIA) || (conta != cliente.CONTA)){
+        System.out.println("SUA CONTA E AGENCIA JÁ FOI GERADA, SEGUEM OS DADOS:");
+        System.out.println("========================");
+        System.out.printf("Nome do Cliente: %s \n", cliente.getNomeCliente());
+        System.out.printf("Agencia: %d \n", cliente.getAgencia());
+        System.out.printf("Conta: %d \n", cliente.getConta());
+        System.out.printf("Saldo: %.2f \n", cliente.getSaldo());
+        System.out.println("========================  \n \n");
+
+        System.out.println("INFORME O VALOR QUE DESEJA SACAR:");
+        Double saqueSolicitado = input.nextDouble();
+
+        if(saqueSolicitado > cliente.getSaldo()){
+            System.out.printf("Saldo Insuficiente, \nSaldo disponivel %.2f Reais", cliente.getSaldo());
             return;
         }
 
+        cliente.setSaldo(cliente.getSaldo()-saqueSolicitado);
+        System.out.printf("Saque de %.2f Reais Realizado\nSaldo Restante %.2f", saqueSolicitado, cliente.getSaldo());
+
         System.out.printf("\n\n");
-        System.out.printf("ACESSO AUTORIZADO\n");
-        System.out.printf("========================\n");
-        System.out.printf("Seja Bem vindo %s\nAgência n° %d\nConta n° %d \n\n", cliente.NOME_CLIENTE, cliente.AGENCIA, cliente.CONTA);
-        System.out.println("Qual o valor que deseja sacar?\n");
-        saqueSolicitado = input.nextDouble();
 
-        if(saqueSolicitado > cliente.SALDO){
-            System.out.printf("Saldo Insuficiente, \nSaldo disponivel %.2f Reais", cliente.SALDO);
-            return;
-        }
 
-        System.out.printf("Saque de %.2f Reais Realizado\nSaldo Restante %.2f", saqueSolicitado, cliente.SALDO-saqueSolicitado);
+        // if(saqueSolicitado > cliente.SALDO){
+        //     System.out.printf("Saldo Insuficiente, \nSaldo disponivel %.2f Reais", cliente.SALDO);
+        //     return;
+        // }
+
+        // System.out.printf("Saque de %.2f Reais Realizado\nSaldo Restante %.2f", saqueSolicitado, cliente.SALDO-saqueSolicitado);
     }
 }

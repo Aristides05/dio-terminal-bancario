@@ -12,4 +12,4 @@ O projeto consiste em uma simulação básica de interação com um usuário, on
 
 ## ⚠️ Observação
 
-Este projeto foi desenvolvido seguindo rigorosamente as especificações da tarefa proposta no módulo.
+Este projeto foi desenvolvido com base no exercício proposto, porém com algumas alterações. Decidi implementar essas modificações para praticar mais a linguagem.
