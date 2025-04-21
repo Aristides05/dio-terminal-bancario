@@ -4,9 +4,9 @@ public class ContaTerminal {
     int conta;
     String agencia;
     String nomeCliente;
-    Double saldo;
+    double saldo;
 
-    public static void main() throws Exception {
+    public static void main(String[] args) throws Exception {
         ContaTerminal contaTerminal = new ContaTerminal();
         contaTerminal.execucao();
     }
@@ -18,7 +18,7 @@ public class ContaTerminal {
         nomeCliente = scanner.nextLine();
 
         System.out.println("Digite sua Agencia: ");
-        agencia = scanner.next();
+        agencia = scanner.nextLine();
 
         System.out.println("Digite sua conta: ");
         conta = scanner.nextInt();
@@ -26,8 +26,8 @@ public class ContaTerminal {
         System.out.println("Por favor, digite seu saldo: ");
         saldo = scanner.nextDouble();
 
-        System.out.println("Olá %s,\n obrigado por criar uma conta em nosso banco!");
-        System.out.println("Sua agência é %d, conta %s e seu saldo %.2f já está disponível para saque\"");
+        System.out.printf("Olá %s,\nobrigado por criar uma conta em nosso banco!\n", nomeCliente);
+        System.out.printf("Sua agência é %s, conta %d e seu saldo %.2f já está disponível para saque.\n", agencia, conta, saldo);
 
         scanner.close();
     }
